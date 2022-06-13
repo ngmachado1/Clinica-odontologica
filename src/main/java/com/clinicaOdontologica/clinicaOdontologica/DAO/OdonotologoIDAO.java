@@ -28,7 +28,7 @@ public class OdonotologoIDAO implements IDao<Odontologo>{
             while(res.next()){
                 int idOdontologo = res.getInt("id");
                 String apellido = res.getString("apellido");
-                String matricula = res.getString("matricula");
+                String matricula = res.getString("numero_matricula");
                 String nombre = res.getString("nombre");
                 o = new Odontologo();
                 o.setID(idOdontologo);
@@ -56,7 +56,7 @@ public class OdonotologoIDAO implements IDao<Odontologo>{
             while(res.next()){
                 int idOdontologo = res.getInt("id");
                 String apellido = res.getString("apellido");
-                String matricula = res.getString("matricula");
+                String matricula = res.getString("numero_matricula");
                 String nombre = res.getString("nombre");
                 Odontologo o = new Odontologo();
                 o.setID(idOdontologo);
@@ -80,7 +80,7 @@ public class OdonotologoIDAO implements IDao<Odontologo>{
         jdbc.setDriver();
         PreparedStatement preparedStatement =  null;
         try(Connection connection = jdbc.connectionOnDB()){
-            preparedStatement = connection.prepareStatement("INSERT INTO odontologos (apellido, matricula, nombre) VALUES(?, ?, ?)");
+            preparedStatement = connection.prepareStatement("INSERT INTO odontologos (apellido, numero_matricula, nombre) VALUES(?, ?, ?)");
             preparedStatement.setString(1, o.getApellido());
             preparedStatement.setString(2, o.getMatricula());
             preparedStatement.setString(3, o.getNombre());
@@ -117,7 +117,7 @@ public class OdonotologoIDAO implements IDao<Odontologo>{
 
         // 2 - Conectar y Crear el Statement
         try(Connection connection = jdbc.connectionOnDB()) {
-            preparedStatement = connection.prepareStatement("UPDATE odontologos SET apellido = ?, nombre = ?, matricula = ? WHERE id = ?");
+            preparedStatement = connection.prepareStatement("UPDATE odontologos SET apellido = ?, nombre = ?, numero_matricula = ? WHERE id = ?");
             preparedStatement.setInt(4, o.getID());
 
             preparedStatement.setString(1, o.getApellido());

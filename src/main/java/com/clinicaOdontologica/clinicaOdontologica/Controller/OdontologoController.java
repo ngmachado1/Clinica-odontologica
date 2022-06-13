@@ -19,10 +19,16 @@ public class OdontologoController {
     public ResponseEntity<List<Odontologo>> getTodos(){
         return ResponseEntity.ok(odontologoService.buscarTodos());
     }
-    @PostMapping("register")
-    public ResponseEntity<Odontologo> registrarOdontologo(@RequestBody Odontologo odontologo){
-        return ResponseEntity.ok(odontologoService.guardarOdontologo(odontologo));
+    @GetMapping("/{id}")
+    public ResponseEntity<Odontologo> getOdontologo(@PathVariable("id") Integer id){
+        return ResponseEntity.ok(odontologoService.buscarOdontologo(id));
     }
+    @PostMapping("/register")
+    public ResponseEntity<Odontologo> registrarOdontologo(@RequestBody Odontologo odontologo){
+        ResponseEntity respuesta = ResponseEntity.ok(odontologoService.guardarOdontologo(odontologo));
+        return respuesta;
+    }
+
     @PutMapping()
     public ResponseEntity<Odontologo> actualizar(@RequestBody Odontologo odontologo){
         ResponseEntity<Odontologo> response = null;

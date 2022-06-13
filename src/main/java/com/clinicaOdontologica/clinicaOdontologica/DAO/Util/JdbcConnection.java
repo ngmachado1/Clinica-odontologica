@@ -20,10 +20,10 @@ public class JdbcConnection {
         this.DB_USER = DB_USER;
         this.DB_PASS = DB_PASS;
     }
-
+    //INIT=RUNSCRIPT FROM 'data.sql'
     public JdbcConnection(){
         this.DB_JDBC_DRIVER = "org.h2.Driver";
-        this.DB_URL = "jdbc:h2:~/db_odonto;INIT=RUNSCRIPT FROM 'create.sql'";
+        this.DB_URL = "jdbc:h2:~/db_odonto;";
         this.DB_USER = "sa";
         this.DB_PASS = "";
     }

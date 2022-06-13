@@ -21,6 +21,8 @@ public class OdonotologoService{
         this.odontologoIDao = odontologoIDao;
     }
 
+
+
     public Odontologo guardarOdontologo(Odontologo o){
         return odontologoIDao.crear(o);
     }
