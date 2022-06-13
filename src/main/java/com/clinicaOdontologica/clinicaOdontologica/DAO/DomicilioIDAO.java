@@ -136,7 +136,7 @@ public class DomicilioIDAO implements IDao<Domicilio>{
 
             // 3 - Ejecutar el statement
             preparedStatement.executeUpdate();
-
+            preparedStatement.close();
             logger.info("Se editó al odontólogo con id: " + d.getId());
 
         }catch (SQLException e){

@@ -9,7 +9,8 @@ create table if not exists pacientes(
     id int auto_increment primary key,
     nombre varchar(255),
     apellido varchar(255),
-    domicilio_id int
+    domicilio_id int,
+    fecha_ingreso timeStamp
 );
 
 create table if not exists domicilios(

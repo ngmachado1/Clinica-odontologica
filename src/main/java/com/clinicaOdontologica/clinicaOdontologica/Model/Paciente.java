@@ -1,16 +1,27 @@
 package com.clinicaOdontologica.clinicaOdontologica.Model;
 
+import java.time.LocalDate;
+
 public class Paciente {
-    private int id;
+    private Integer id;
     private String nombre;
     private String apellido;
+    private LocalDate fecha_ingreso;
     private int domicilio_id;
 
-    public int getId() {
+    public LocalDate getFecha_ingreso() {
+        return fecha_ingreso;
+    }
+
+    public void setFechaIngreso(LocalDate fecha_ingreso) {
+        this.fecha_ingreso = fecha_ingreso;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

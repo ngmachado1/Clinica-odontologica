@@ -128,11 +128,11 @@ public class OdonotologoIDAO implements IDao<Odontologo>{
             // 3 - Ejecutar el statement
 
             preparedStatement.executeUpdate();
-
+            preparedStatement.close();
 
             logger.info("Se editó al odontólogo con id: " + o.getID());
 
-        }catch (SQLException e){
+        }catch (SQLException  e){
             logger.debug("Ha ocurrido un error al editar el odontologo: "+ o.getID());
         }
 

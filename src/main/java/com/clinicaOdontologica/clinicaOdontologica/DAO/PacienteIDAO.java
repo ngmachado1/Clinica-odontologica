@@ -1,6 +1,7 @@
 package com.clinicaOdontologica.clinicaOdontologica.DAO;
 
 import com.clinicaOdontologica.clinicaOdontologica.DAO.Util.JdbcConnection;
+import com.clinicaOdontologica.clinicaOdontologica.Model.Domicilio;
 import com.clinicaOdontologica.clinicaOdontologica.Model.Odontologo;
 import com.clinicaOdontologica.clinicaOdontologica.Model.Paciente;
 import org.apache.log4j.Logger;
@@ -50,6 +51,7 @@ public class PacienteIDAO implements IDao<Paciente> {
         jdbc.setDriver();
         PreparedStatement preparedStatement =  null;
         List<Paciente> pacientes = new ArrayList();
+
         try(Connection connection =  jdbc.connectionOnDB()){
             preparedStatement = connection.prepareStatement("SELECT * FROM pacientes");
             ResultSet res =  preparedStatement.executeQuery();
@@ -79,7 +81,6 @@ public class PacienteIDAO implements IDao<Paciente> {
 
     @Override
     public Paciente crear(Paciente p) {
-
         jdbc.setDriver();
         PreparedStatement preparedStatement =  null;
         try(Connection connection = jdbc.connectionOnDB()){
@@ -99,7 +100,6 @@ public class PacienteIDAO implements IDao<Paciente> {
 
     @Override
     public void eliminar(int id) {
-
         jdbc.setDriver();
         PreparedStatement preparedStatement = null;
         DomicilioIDAO domicilioIDAO = new DomicilioIDAO();
@@ -126,8 +126,6 @@ public class PacienteIDAO implements IDao<Paciente> {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-
     }
 
     @Override
@@ -137,22 +135,22 @@ public class PacienteIDAO implements IDao<Paciente> {
 
         // 2 - Conectar y Crear el Statement
         try(Connection connection = jdbc.connectionOnDB()) {
-            preparedStatement = connection.prepareStatement("UPDATE pacientes SET apellido = ?, nombre = ?, domicilio_id = ? WHERE id = ?");
-            preparedStatement.setInt(4, p.getId());
+            preparedStatement = connection.prepareStatement("UPDATE pacientes SET apellido = ?, nombre = ? WHERE id = ?");
+            preparedStatement.setInt(3, p.getId());
 
             preparedStatement.setString(1, p.getApellido());
             preparedStatement.setString(2, p.getNombre());
-            preparedStatement.setInt(3, p.getDomicilio_id());
 
             // 3 - Ejecutar el statement
 
             preparedStatement.executeUpdate();
 
-
+            preparedStatement.close();
             logger.info("Se editó al odontólogo con id: " + p.getId());
 
         }catch (SQLException e){
             logger.debug("Ha ocurrido un error al editar el odontologo: "+ p.getId());
+            e.printStackTrace();
         }
 
         return p;

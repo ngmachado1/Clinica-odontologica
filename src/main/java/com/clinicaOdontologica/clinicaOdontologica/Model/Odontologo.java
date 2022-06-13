@@ -1,18 +1,18 @@
 package com.clinicaOdontologica.clinicaOdontologica.Model;
 
 public class Odontologo {
-    private int ID;
+    private Integer ID;
     private String apellido;
     private String matricula;
     private String nombre;
 
 
 
-    public int getID() {
+    public Integer getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(Integer ID) {
         this.ID = ID;
     }
 
