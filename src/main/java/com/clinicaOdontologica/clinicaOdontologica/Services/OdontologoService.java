@@ -6,10 +6,10 @@ import com.clinicaOdontologica.clinicaOdontologica.Services.ServiceException.Ser
 
 import java.util.List;
 
-public class OdonotologoService{
+public class OdontologoService {
     private IDao<Odontologo> odontologoIDao;
 
-    public OdonotologoService(IDao<Odontologo> odontologoIDao) {
+    public OdontologoService(IDao<Odontologo> odontologoIDao) {
         this.odontologoIDao = odontologoIDao;
     }
 
@@ -20,7 +20,6 @@ public class OdonotologoService{
     public void setOdontologoIDao(IDao<Odontologo> odontologoIDao) {
         this.odontologoIDao = odontologoIDao;
     }
-
 
 
     public Odontologo guardarOdontologo(Odontologo o){
@@ -36,7 +35,11 @@ public class OdonotologoService{
         odontologoIDao.eliminar(id);
     }
     public Odontologo actualizar(Odontologo o) throws ServiceException {
-        return odontologoIDao.actualizar(o);
+        if(odontologoIDao.buscar(o.getID()) != null){
+            o = odontologoIDao.actualizar(o);
+        };
+
+        return o;
 
     }
 }

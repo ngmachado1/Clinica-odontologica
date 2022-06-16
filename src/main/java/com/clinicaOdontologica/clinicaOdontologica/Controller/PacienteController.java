@@ -1,7 +1,7 @@
 package com.clinicaOdontologica.clinicaOdontologica.Controller;
 
 
-import com.clinicaOdontologica.clinicaOdontologica.DAO.PacienteIDAO;
+import com.clinicaOdontologica.clinicaOdontologica.DAO.PacienteDAO;
 import com.clinicaOdontologica.clinicaOdontologica.Model.Paciente;
 import com.clinicaOdontologica.clinicaOdontologica.Services.PacienteService;
 import com.clinicaOdontologica.clinicaOdontologica.Services.ServiceException.ServiceException;
@@ -18,7 +18,7 @@ public class PacienteController {
     /**
      * El servicio a usar por parte del controller
      */
-    private PacienteService pacienteService = new PacienteService(new PacienteIDAO());
+    private PacienteService pacienteService = new PacienteService(new PacienteDAO());
 
 
     /**

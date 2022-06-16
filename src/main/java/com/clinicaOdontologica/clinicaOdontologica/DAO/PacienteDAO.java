@@ -1,8 +1,6 @@
 package com.clinicaOdontologica.clinicaOdontologica.DAO;
 
 import com.clinicaOdontologica.clinicaOdontologica.DAO.Util.JdbcConnection;
-import com.clinicaOdontologica.clinicaOdontologica.Model.Domicilio;
-import com.clinicaOdontologica.clinicaOdontologica.Model.Odontologo;
 import com.clinicaOdontologica.clinicaOdontologica.Model.Paciente;
 import org.apache.log4j.Logger;
 
@@ -14,9 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PacienteIDAO implements IDao<Paciente> {
+public class PacienteDAO implements IDao<Paciente> {
     private JdbcConnection jdbc = new JdbcConnection();
-    private Logger logger = Logger.getLogger(PacienteIDAO.class);
+    private Logger logger = Logger.getLogger(PacienteDAO.class);
     @Override
     public Paciente buscar(int id) {
         jdbc.setDriver();
@@ -102,7 +100,7 @@ public class PacienteIDAO implements IDao<Paciente> {
     public void eliminar(int id) {
         jdbc.setDriver();
         PreparedStatement preparedStatement = null;
-        DomicilioIDAO domicilioIDAO = new DomicilioIDAO();
+        DomicilioDAO domicilioDAO = new DomicilioDAO();
 
         try(Connection connection  = jdbc.connectionOnDB()) {
             //buscar el paciente
@@ -119,7 +117,7 @@ public class PacienteIDAO implements IDao<Paciente> {
             preparedStatement.setInt(1, id);
 
             //eliminar el domicilio
-            domicilioIDAO.eliminar(domicilio_id);
+            domicilioDAO.eliminar(domicilio_id);
 
             preparedStatement.close();
 

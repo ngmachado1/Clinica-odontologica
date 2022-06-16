@@ -2,8 +2,6 @@ package com.clinicaOdontologica.clinicaOdontologica.DAO;
 
 import com.clinicaOdontologica.clinicaOdontologica.DAO.Util.JdbcConnection;
 import com.clinicaOdontologica.clinicaOdontologica.Model.Domicilio;
-import com.clinicaOdontologica.clinicaOdontologica.Model.Odontologo;
-import com.clinicaOdontologica.clinicaOdontologica.Model.Paciente;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -13,8 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DomicilioIDAO implements IDao<Domicilio>{
-    private Logger logger = Logger.getLogger(OdonotologoIDAO.class);
+public class DomicilioDAO implements IDao<Domicilio>{
+    private Logger logger = Logger.getLogger(OdontologoDAO.class);
     private JdbcConnection jdbc = new JdbcConnection();
 
     @Override

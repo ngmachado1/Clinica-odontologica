@@ -1,9 +1,8 @@
 package com.clinicaOdontologica.clinicaOdontologica.Services;
 
-import com.clinicaOdontologica.clinicaOdontologica.DAO.DomicilioIDAO;
+import com.clinicaOdontologica.clinicaOdontologica.DAO.DomicilioDAO;
 import com.clinicaOdontologica.clinicaOdontologica.DAO.IDao;
 
-import com.clinicaOdontologica.clinicaOdontologica.DAO.PacienteIDAO;
 import com.clinicaOdontologica.clinicaOdontologica.Model.Domicilio;
 import com.clinicaOdontologica.clinicaOdontologica.Model.Paciente;
 import com.clinicaOdontologica.clinicaOdontologica.Services.ServiceException.ServiceException;
@@ -13,7 +12,7 @@ import java.util.List;
 
 public class PacienteService {
     private IDao<Paciente> pacienteIDao;
-    private DomicilioIDAO domicilioIDAO = new DomicilioIDAO();
+    private DomicilioDAO domicilioDAO = new DomicilioDAO();
 
     public PacienteService(IDao<Paciente> pacienteIDao) {
         this.pacienteIDao = pacienteIDao;
@@ -40,7 +39,7 @@ public class PacienteService {
         List<Paciente> pacientes = pacienteIDao.buscarTodos();
         List<Object> o = new ArrayList();
         for(Paciente p: pacientes){
-            Domicilio d = domicilioIDAO.buscar(p.getDomicilio_id());
+            Domicilio d = domicilioDAO.buscar(p.getDomicilio_id());
             o.add(p);
             o.add(d);
         }

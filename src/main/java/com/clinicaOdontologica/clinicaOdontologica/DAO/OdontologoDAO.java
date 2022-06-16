@@ -11,8 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OdonotologoIDAO implements IDao<Odontologo>{
-    private Logger logger = Logger.getLogger(OdonotologoIDAO.class);
+public class OdontologoDAO implements IDao<Odontologo>{
+    private Logger logger = Logger.getLogger(OdontologoDAO.class);
     private JdbcConnection jdbc = new JdbcConnection();
 
     @Override
@@ -103,7 +103,7 @@ public class OdonotologoIDAO implements IDao<Odontologo>{
             preparedStatement = connection.prepareStatement("DELETE FROM odontologos where id = ?");
             preparedStatement.setInt(1, id);
 
-            ResultSet res = preparedStatement.executeQuery();
+            preparedStatement.execute();
             preparedStatement.close();
 
         } catch (SQLException throwables) {
@@ -115,7 +115,6 @@ public class OdonotologoIDAO implements IDao<Odontologo>{
         jdbc.setDriver();
         PreparedStatement preparedStatement = null;
 
-        // 2 - Conectar y Crear el Statement
         try(Connection connection = jdbc.connectionOnDB()) {
             preparedStatement = connection.prepareStatement("UPDATE odontologos SET apellido = ?, nombre = ?, numero_matricula = ? WHERE id = ?");
             preparedStatement.setInt(4, o.getID());
@@ -123,9 +122,6 @@ public class OdonotologoIDAO implements IDao<Odontologo>{
             preparedStatement.setString(1, o.getApellido());
             preparedStatement.setString(2, o.getNombre());
             preparedStatement.setString(3, o.getMatricula());
-
-
-            // 3 - Ejecutar el statement
 
             preparedStatement.executeUpdate();
             preparedStatement.close();
